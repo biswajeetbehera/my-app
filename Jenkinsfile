@@ -5,7 +5,7 @@ node {
    stage('SCM Checkout'){
     // Clone repo
 	git branch: 'master', 
-	credentialsId: 'biswajeetbehera', 
+	credentialsId: 'github', 
 	url: 'https://github.com/biswajeetbehera/myweb'
    
    }
