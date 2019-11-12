@@ -1,17 +1,17 @@
 
 node {
-   def sonarUrl = 'sonar.host.url=http://172.31.30.136:9000'
+   def sonarUrl = 'sonar.host.url=https://sonarcloud.io/dashboard?id=biswajeetbehera_my-app'
    def mvn = tool (name: 'maven3', type: 'maven') + '/bin/mvn'
    stage('SCM Checkout'){
     // Clone repo
 	git branch: 'master', 
-	credentialsId: 'github', 
-	url: 'https://github.com/javahometech/myweb'
+	credentialsId: 'biswajeetbehera', 
+	url: 'https://github.com/biswajeetbehera/myweb'
    
    }
    
    stage('Sonar Publish'){
-	   withCredentials([string(credentialsId: 'sonarqube', variable: 'sonarToken')]) {
+	   withCredentials([string(credentialsId: 'biswajeetbehera', variable: 'sonarToken')]) {
         def sonarToken = "sonar.login=${sonarToken}"
         sh "${mvn} sonar:sonar -D${sonarUrl}  -D${sonarToken}"
 	 }
@@ -44,7 +44,7 @@ node {
 							   Job Name: ${env.JOB_NAME}
 
 Thanks,
-DevOps Team""", cc: '', from: '', replyTo: '', subject: "${env.JOB_NAME} Success", to: 'hari.kammana@gmail.com'
+DevOps Team""", cc: '', from: '', replyTo: '', subject: "${env.JOB_NAME} Success", to: 'beherabiswajeet3@gmail.com'
    
    }
 }
